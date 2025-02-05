@@ -1,0 +1,31 @@
+[2025-02-05 03:57:15,461] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: example_dag.execute_remote_script manual__2025-02-05T03:52:12.151970+00:00 [queued]>
+[2025-02-05 03:57:15,463] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: example_dag.execute_remote_script manual__2025-02-05T03:52:12.151970+00:00 [queued]>
+[2025-02-05 03:57:15,463] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2025-02-05 03:57:15,463] {taskinstance.py:1357} INFO - Starting attempt 2 of 2
+[2025-02-05 03:57:15,464] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2025-02-05 03:57:15,468] {taskinstance.py:1377} INFO - Executing <Task(SSHOperator): execute_remote_script> on 2025-02-05 03:52:12.151970+00:00
+[2025-02-05 03:57:15,469] {standard_task_runner.py:52} INFO - Started process 262 to run task
+[2025-02-05 03:57:15,471] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'example_dag', 'execute_remote_script', 'manual__2025-02-05T03:52:12.151970+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/example_dag.py', '--cfg-path', '/tmp/tmpt8t1pxgm', '--error-file', '/tmp/tmpj4da34oj']
+[2025-02-05 03:57:15,471] {standard_task_runner.py:80} INFO - Job 45: Subtask execute_remote_script
+[2025-02-05 03:57:15,493] {task_command.py:369} INFO - Running <TaskInstance: example_dag.execute_remote_script manual__2025-02-05T03:52:12.151970+00:00 [running]> on host 4e60bfee8242
+[2025-02-05 03:57:15,520] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=example_dag
+AIRFLOW_CTX_TASK_ID=execute_remote_script
+AIRFLOW_CTX_EXECUTION_DATE=2025-02-05T03:52:12.151970+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2025-02-05T03:52:12.151970+00:00
+[2025-02-05 03:57:15,520] {ssh.py:136} INFO - Creating ssh_client
+[2025-02-05 03:57:15,543] {ssh.py:114} INFO - ssh_hook is not provided or invalid. Trying ssh_conn_id to create SSHHook.
+[2025-02-05 03:57:15,547] {base.py:68} INFO - Using connection ID 'ssh-server' for task execution.
+[2025-02-05 03:57:15,547] {ssh.py:271} WARNING - Remote Identification Change is not verified. This won't protect against Man-In-The-Middle attacks
+[2025-02-05 03:57:15,548] {ssh.py:277} WARNING - No Host Key Verification. This won't protect against Man-In-The-Middle attacks
+[2025-02-05 03:57:15,578] {transport.py:1881} INFO - Connected (version 2.0, client OpenSSH_7.6p1)
+[2025-02-05 03:57:15,635] {transport.py:1881} INFO - Authentication (password) successful!
+[2025-02-05 03:57:15,635] {ssh.py:441} INFO - Running command: echo "Hello World"
+[2025-02-05 03:57:15,704] {ssh.py:473} INFO - Hello World
+[2025-02-05 03:57:15,715] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=example_dag, task_id=execute_remote_script, execution_date=20250205T035212, start_date=20250205T035715, end_date=20250205T035715
+[2025-02-05 03:57:15,735] {local_task_job.py:156} INFO - Task exited with return code 0
+[2025-02-05 03:57:15,747] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

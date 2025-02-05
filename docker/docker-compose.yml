@@ -1,0 +1,67 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 10s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  webserver:
+    image: apache/airflow:2.7.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__WEBSERVER__SECRET_KEY: "my_secret_key"
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__CORE__FERNET_KEY: "dHEwp__W7rEaP8hG2NxbrXUjEAbpIoiCtfGvt_tVijg="  # 替换为实际生成的 Fernet Key
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    command: >
+      bash -c "airflow db init &&
+               airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com &&
+               airflow webserver"
+
+  scheduler:
+    image: apache/airflow:2.7.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__FERNET_KEY: "dHEwp__W7rEaP8hG2NxbrXUjEAbpIoiCtfGvt_tVijg="  # 替换为实际生成的 Fernet Key
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+    command: >
+      bash -c "pip install apache-airflow-providers-ssh &&
+               airflow scheduler"
+
+  # 模拟执行脚本的主机
+  ssh-server:
+    image: rastasheep/ubuntu-sshd:18.04
+    ports:
+      - "2222:22"
+    volumes:
+      - ./ssh/id_rsa.pub:/root/.ssh/authorized_keys  # 将公钥挂载到 root 用户的 authorized_keys
+      - ./ssh/script:/script
+    environment:
+      - ROOT_PASSWORD=root  # 可选，仍保留密码认证
+
+
+volumes:
+  postgres_data:

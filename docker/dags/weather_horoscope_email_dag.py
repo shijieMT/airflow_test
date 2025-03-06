@@ -13,7 +13,7 @@ def get_weather_advice(weather_data):
     """获取天气建议"""
     url = "https://api.siliconflow.cn/v1/chat/completions"
     headers = {
-        "Authorization": "Bearer sk-mtmzmksnwicnyptngiuiuxnfjgskdjzdeyfwnvlfydhbqxxt",
+        "Authorization": "Bearer ",
         "Content-Type": "application/json"
     }
     
@@ -57,7 +57,7 @@ def get_weather():
     """获取武威天气信息"""
     url = "https://restapi.amap.com/v3/weather/weatherInfo"
     params = {
-        "key": "2d9086103ad488770bcab31c9344e2cd",
+        "key": "",
         "city": "620600",
         "extensions": "all"
     }

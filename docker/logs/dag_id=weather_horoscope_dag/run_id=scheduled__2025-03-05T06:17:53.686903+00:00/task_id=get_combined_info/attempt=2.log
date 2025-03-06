@@ -1,0 +1,60 @@
+[2025-03-06T06:23:04.954+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/sqlalchemy.py:124 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-03-06T06:23:04.958+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_horoscope_dag.get_combined_info scheduled__2025-03-05T06:17:53.686903+00:00 [queued]>
+[2025-03-06T06:23:04.988+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_horoscope_dag.get_combined_info scheduled__2025-03-05T06:17:53.686903+00:00 [queued]>
+[2025-03-06T06:23:04.989+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 3
+[2025-03-06T06:23:04.993+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): get_combined_info> on 2025-03-05 06:17:53.686903+00:00
+[2025-03-06T06:23:04.995+0000] {standard_task_runner.py:57} INFO - Started process 47 to run task
+[2025-03-06T06:23:04.997+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'weather_horoscope_dag', 'get_combined_info', 'scheduled__2025-03-05T06:17:53.686903+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/email_dag.py', '--cfg-path', '/tmp/tmpkiayu60z']
+[2025-03-06T06:23:04.998+0000] {standard_task_runner.py:85} INFO - Job 35: Subtask get_combined_info
+[2025-03-06T06:23:05.006+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-03-06T06:23:05.201+0000] {task_command.py:415} INFO - Running <TaskInstance: weather_horoscope_dag.get_combined_info scheduled__2025-03-05T06:17:53.686903+00:00 [running]> on host a6553d1b92df
+[2025-03-06T06:23:05.213+0000] {logging_mixin.py:151} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/sqlalchemy.py:124 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-03-06T06:23:05.276+0000] {taskinstance.py:1660} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='liuzifeng_r@163.com' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_horoscope_dag' AIRFLOW_CTX_TASK_ID='get_combined_info' AIRFLOW_CTX_EXECUTION_DATE='2025-03-05T06:17:53.686903+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-05T06:17:53.686903+00:00'
+[2025-03-06T06:23:25.274+0000] {python.py:194} INFO - Done. Returned value was: 
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #333;">💌 亲爱的宝贝，这是你的专属日报 💌</h1>
+        </div>
+        
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            
+            <div style="text-align: center;">
+                <h2>宝宝早安，今天武威的天气如下</h2>
+                <h2>💗💗💗</h2>
+                <p>📅日期：2025-03-06</p>
+                <p>🌞白天天气：多云</p>
+                <p>🌡️白天温度：5℃</p>
+                <p>🌬️白天风力：1-3</p>
+                <p>🌙夜间天气：多云</p>
+                <p>🌡️夜间温度：-4℃</p>
+                <p>🌬️夜间风力：1-3</p>
+            </div>
+            
+        </div>
+        
+        <div style="background-color: #f0f0f0; padding: 20px; border-radius: 10px;">
+            <h2 style="color: #666;">🌟 天秤座今日运势 🌟</h2>
+            <p style="line-height: 1.6; color: #444;">🌟 **天秤座今日运势** 🌟
+
+💖 **爱情运势**：  
+今日桃花运旺盛，单身者有机会邂逅心仪对象，记得展现你的优雅与魅力。有伴者与伴侣关系甜蜜，适合共度浪漫时光，增进感情。
+
+💼 **事业运势**：  
+工作状态平稳，团队合作顺畅，你的协调能力将大放异彩。适合处理重要事务，决策时保持理性，结果会令人满意。
+
+💰 **财运运势**：  
+财运稳中有升，投资理财需谨慎，避免冲动消费。可能会有意外小惊喜，但记得合理规划，保持收支平衡。
+
+🌈 **整体建议**：  
+今日适合平衡内心与外界，保持平和心态，享受生活的美好。无论是爱情、事业还是财运，都需用心经营，收获满满。✨</p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; color: #888;">
+            <p>愿你今天开心快乐！😊</p>
+            <p>——来自你的专属小助手</p>
+        </div>
+    </div>
+    
+[2025-03-06T06:23:25.292+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=weather_horoscope_dag, task_id=get_combined_info, execution_date=20250305T061753, start_date=20250306T062304, end_date=20250306T062325
+[2025-03-06T06:23:25.344+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-03-06T06:23:25.357+0000] {taskinstance.py:2784} INFO - 1 downstream tasks scheduled from follow-on schedule check

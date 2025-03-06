@@ -25,7 +25,14 @@ services:
       AIRFLOW__WEBSERVER__SECRET_KEY: "my_secret_key"
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
-      AIRFLOW__CORE__FERNET_KEY: "dHEwp__W7rEaP8hG2NxbrXUjEAbpIoiCtfGvt_tVijg="  # 替换为实际生成的 Fernet Key
+      AIRFLOW__CORE__FERNET_KEY: "dHEwp__W7rEaP8hG2NxbrXUjEAbpIoiCtfGvt_tVijg="
+      AIRFLOW__EMAIL__EMAIL_BACKEND: airflow.utils.email.send_email_smtp
+      AIRFLOW__SMTP__SMTP_HOST: smtp.163.com ##smtp服务器
+      AIRFLOW__SMTP__SMTP_PORT: "465" ##smtp端口
+      AIRFLOW__SMTP__SMTP_USER: "" ##发出邮箱
+      AIRFLOW__SMTP__SMTP_PASSWORD: "" ##pop3/smtp密钥
+      AIRFLOW__SMTP__SMTP_MAIL_FROM: "" ##发出邮箱
+      AIRFLOW__SMTP__SMTP_SSL: "True"
     ports:
       - "8080:8080"
     volumes:
@@ -44,11 +51,19 @@ services:
     environment:
       AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
       AIRFLOW__CORE__FERNET_KEY: "dHEwp__W7rEaP8hG2NxbrXUjEAbpIoiCtfGvt_tVijg="  # 替换为实际生成的 Fernet Key
+      AIRFLOW__EMAIL__EMAIL_BACKEND: airflow.utils.email.send_email_smtp
+      AIRFLOW__SMTP__SMTP_HOST: smtp.163.com ##smtp服务器
+      AIRFLOW__SMTP__SMTP_PORT: "465" ##smtp端口
+      AIRFLOW__SMTP__SMTP_USER: "" ##发出邮箱
+      AIRFLOW__SMTP__SMTP_PASSWORD: "" ##pop3/smtp密钥
+      AIRFLOW__SMTP__SMTP_MAIL_FROM: "" ##发出邮箱
+      AIRFLOW__SMTP__SMTP_SSL: "True"
+      AIRFLOW__SMTP__SMTP_STARTTLS: "False"
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
     command: >
-      bash -c "pip install apache-airflow-providers-ssh &&
+      bash -c "pip install requests pendulum &&
                airflow scheduler"
 
   # 模拟执行脚本的主机
